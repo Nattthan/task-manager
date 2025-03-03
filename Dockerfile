@@ -1,23 +1,17 @@
-# Utiliser une image de Node.js comme base
-FROM node:18-alpine 
+# Use official Node.js image
+FROM node:18-alpine
 
-# Définir le répertoire de travail
+# Set working directory
 WORKDIR /app
 
-# Copier les fichiers package.json et package-lock.json
+# Copy package.json and install dependencies
 COPY package.json package-lock.json ./
-
-# Installer les dépendances
 RUN npm install
 
-# Copier tout le projet
+# Copy all files
 COPY . .
 
-# Builder l'application
+# Build and expose the app
 RUN npm run build
-
-# Exposer le port 3000
 EXPOSE 3000
-
-# Démarrer l'application
-CMD ["npm", "run", "start"]
+CMD ["npm", "start"]
