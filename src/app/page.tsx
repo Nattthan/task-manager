@@ -1,9 +1,9 @@
+"use client";  
 import { useState } from 'react';
 
 export default function Home() {
   const [tasks, setTasks] = useState<string[]>([]);
   const [task, setTask] = useState('');
-
   const addTask = () => {
     if (task.trim()) {
       setTasks([...tasks, task]);
